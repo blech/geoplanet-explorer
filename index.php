@@ -11,7 +11,14 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-  <title>GeoPlanet Explorer</title>
+  <title>GeoPlanet Explorer<?php if(isset($_GET['woeid'])) { 
+    echo " - for "; 
+    $all = getdetails($_GET['woeid']);
+    $current = $all->query->results->results[0]->place;
+    echo $current->name;
+  } ?><?php if(isset($_GET['start'])) { 
+    echo " - search";  
+  } ?></title>
   <link rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
   <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
